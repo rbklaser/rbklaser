@@ -1,0 +1,58 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :sec_name %><br />
+    <%= f.text_field :sec_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :email_confirmation %><br />
+    <%= f.text_field :email_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :pass %><br />
+    <%= f.password_field :pass %>
+  </div>
+  <div class="field">
+    <%= f.label :pass_confirmation %><br />
+    <%= f.password_field :pass_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :is_admin %><br />
+    <%= f.text_field :is_admin %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :nrdziennika %><br />
+    <%= f.text_field :nrdziennika %>
+  </div>
+  <div class="field">
+    <%= f.label :nrtel %><br />
+    <%= f.text_field :nrtel %>
+  </div>
+  <div class="field">
+    <%= f.label :has_avatar %><br />
+    <%= f.text_field :has_avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

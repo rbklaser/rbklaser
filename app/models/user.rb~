@@ -1,0 +1,42 @@
+require 'digest/sha1'
+require 'mail'
+class EmailValidator < ActiveModel::EachValidator
+  def validate_each(record,attribute,value)
+    begin
+      m = Mail::Address.new(value)
+      r = m.domain && m.address == value
+      t = m.__send__(:tree)
+      r &&= (t.domain.dot_atom_text.elements.size > 1)
+    rescue Exception => e   
+      r = false
+    end
+    record.errors[attribute] << (options[:message] || "is invalid") unless r
+  end
+end
+
+class User < ActiveRecord::Base
+      validates_presence_of :name
+      validates_presence_of :sec_name
+      validates_presence_of :nrdziennika
+      validates_presence_of :is_admin
+      validates_presence_of :pass
+      validates :email, :presence => true, :email => true
+
+      
+      validates_confirmation_of :email
+      validates_confirmation_of :pass
+      validates_presence_of :email_confirmation
+      validates_presence_of :pass_confirmation
+      
+      validates_numericality_of :nrtel
+      validates_uniqueness_of :email
+      
+      before_save :salt_password
+      
+      protected
+      def salt_password
+      	      self.pass = Digest::SHA1.hexdigest(self.pass)
+      end
+
+
+end

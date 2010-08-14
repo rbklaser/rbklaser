@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  sec_name: MyString
+  nrdziennika: 
+  nrtel: MyString
+  has_avatar: 
+
+two:
+  name: MyString
+  sec_name: MyString
+  nrdziennika: 
+  nrtel: MyString
+  has_avatar: 
