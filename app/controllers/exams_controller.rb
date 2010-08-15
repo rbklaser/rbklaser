@@ -82,5 +82,6 @@ class ExamsController < ApplicationController
   end
   
   def search
-    #
+    @exams = Exam.where("name like ?", params[:q])
+  end
 end
