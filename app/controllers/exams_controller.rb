@@ -80,4 +80,7 @@ class ExamsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def search
+    #
 end
