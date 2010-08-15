@@ -1,31 +1,21 @@
 <h1>Listing users</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Sec name</th>
-    <th>Nrdziennika</th>
-    <th>Nrtel</th>
-    <th>Has avatar</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.sec_name %></td>
-    <td><%= user.nrdziennika %></td>
-    <td><%= user.nrtel %></td>
-    <td><%= user.has_avatar %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<ul>
+ <li>Imię: <span><%= user.name %></span></li>
+ <li>Nazwisko: <span><%= user.sec_name %></span></li>
+ <li>Nr w dzienniku: <span><%= user.nrdziennika %></span></li>
+ <li>Numer telefonu: <span><%= user.nrtel %></span></li>
+ <li>Admin?: <span>
+ <% if user.is_admin %>
+ 	<%= "Tak" %>
+ <% else %>
+ 	<%= "Nie" %>
+ <% end %>
+</span></li>
+</ul> 
+<span><%= link_to 'Pokaż', user %></span>
+<span><%= link_to 'Edytuj', edit_user_path(user) %></span>
+<span><%= link_to 'Usuń', user, :confirm => 'Jesteś pewien?', :method => :delete %></span>
 <% end %>
-</table>
-
-<br />
-
+<br /><br />
 <%= link_to 'New User', new_user_path %>

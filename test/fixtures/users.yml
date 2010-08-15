@@ -1,15 +1,17 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
-  name: MyString
-  sec_name: MyString
-  nrdziennika: 
-  nrtel: MyString
-  has_avatar: 
-
+  name: Bob
+  sec_name: Budowniczy
+  nrdziennika: 2
+  nrtel: 501414141
+  has_avatar: 0
+  pass: test
+  email: bob@sekwana.pl
+  
 two:
-  name: MyString
-  sec_name: MyString
-  nrdziennika: 
-  nrtel: MyString
-  has_avatar: 
+  name: Szatan
+  sec_name: Serduszko
+  nrdziennika: 54
+  nrtel: 104140401
+  has_avatar: 0
+  pass: test
+  email: pielko@hell.ru

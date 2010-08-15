@@ -1,4 +1,10 @@
 Rbklaser::Application.routes.draw do
+  resources :resources
+
+  resources :comments
+
+  resources :exams
+
   resources :users
 
   get "home/index"

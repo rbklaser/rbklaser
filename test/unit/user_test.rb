@@ -1,8 +1,9 @@
-require 'test_helper'
+
 
 class UserTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+	fixtures :users
+	
+	def test.auth
+		assert_equal @bob, User.auth("bob@sekwana.pl", "test")
+	end
 end
