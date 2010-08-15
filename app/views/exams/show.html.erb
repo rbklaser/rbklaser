@@ -14,6 +14,16 @@
   <b>Date:</b>
   <%= @exam.date %>
 </p>
+<p>
+  <b>Źródła do nauki:</b>
+  <% @exam.resources.each do |resource| %>
+    <%= resource.name %>
+    <br />
+    Zawartość: <%= resource.content %>
+    <br />
+    Link: <%= link_to(resource.name, resource.url) %>
+<% end %>
+</p>
 
 
 <%= link_to 'Edit', edit_exam_path(@exam) %> |
