@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100816151051) do
+ActiveRecord::Schema.define(:version => 20100816170222) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(:version => 20100816151051) do
     t.string   "sec_name"
     t.integer  "nrdziennika"
     t.string   "nrtel"
-    t.boolean  "has_avatar"
     t.boolean  "is_admin"
     t.string   "pass"
     t.string   "email"
