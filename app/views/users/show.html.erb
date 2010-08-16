@@ -21,8 +21,8 @@
 </p>
 
 <p>
-  <b>Has avatar:</b>
-  <%= @user.has_avatar %>
+  <b>Avatar</b>
+  <%= image_tag @user.photo.url(:normal) %>
 </p>
 
 

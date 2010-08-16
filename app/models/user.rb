@@ -19,7 +19,10 @@ class User < ActiveRecord::Base
       validates_numericality_of :nrtel
       validates_uniqueness_of :email
       
-      has_attached_file :photo, :styles {:normal => "100x100>"}
+      # Paperclip
+      has_attached_file :photo, :styles => {
+          :normal => "100x100>"
+        }
       
       before_save :salt_password
       
