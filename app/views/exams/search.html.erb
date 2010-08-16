@@ -1,7 +1,17 @@
-<%= form_tag(search_path, :method => "post") do %>
+<%= form_tag('/exams/search', :method => "post") do %>
   <%= label_tag(:q, "Szukaj: ") %>
   <%= text_field_tag(:q) %>
   <%= submit_tag("Szukaj") %>
  <% end %>
  
- 
+<% if @exams.class != NilClass %> 
+  <% unless @exams.blank? %>
+  <h1>Wyniki wyszukiwania egzaminów</h1>
+    <% @exams.each do |exam| %>
+      Tytuł: <%= exam.name %>
+      <%= link_to "Pokaż", exam %>
+    <% end %>
+ <% else %>
+  Nie znaleziono niczego 
+  <% end %>
+<% end %>

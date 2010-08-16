@@ -3,6 +3,10 @@ Rbklaser::Application.routes.draw do
 
   resources :comments
 
+  # deprecated chyba?
+  #map.search 'exams/search', 'exams#search'
+  
+  match 'exams/search' => 'exams#search'
   resources :exams
 
   resources :users
