@@ -46,4 +46,8 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_redirected_to users_path
   end
+  
+  test "should login user" do
+    login :post => {:login => '', :pass => ''}
+  end
 end
