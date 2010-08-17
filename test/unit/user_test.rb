@@ -39,7 +39,7 @@ class UserTest < ActiveSupport::TestCase
       :pass => "ts", :nrdziennika => 1, :nrtel => 100400400, :email_confirmation => "busyemail@email.com", 
         :pass_confirmation => "ts")
 	  user_created.save
-	  assert User.auth("busyemail@email.com", "ts")
+	  assert User.auth("busyemail@email.com", "ts"), "Nie powinno dac sie zarejestrowac 2 razy na ten sam email"
   end
   
   def test_fail_auth
@@ -47,6 +47,7 @@ class UserTest < ActiveSupport::TestCase
       :pass => "ts", :nrdziennika => 1, :nrtel => 100400400, :email_confirmation => "busyemail@email.com", 
         :pass_confirmation => "ts")
     user_created.save
-    assert !User.auth("busyemail@email.com", "bad_pass")
+    assert !User.auth("busyemail@email.com", "bad_pass"), "Nie powinno dac sie zalogowac ze zlym haslem (:"
   end
+
 end
