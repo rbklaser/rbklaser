@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
       validates_presence_of :pass_confirmation
       
       validates_numericality_of :nrtel
-      validates_uniqueness_of :email
+      validates_uniqueness_of :email, :nrdziennika
       
       # Paperclip
       has_attached_file :photo, :styles => {

@@ -3,7 +3,7 @@ one:
   sec_name: Budowniczy
   nrdziennika: 2
   nrtel: 501414141
-  pass: test
+  pass: 4e1243bd22c66e76c2ba9eddc1f91394e57f9f83 # sha1 sum for "test"
   email: bob@sekwana.pl
   
 two:
@@ -11,5 +11,5 @@ two:
   sec_name: Serduszko
   nrdziennika: 54
   nrtel: 104140401
-  pass: test
+  pass: 7c6e5dd1bacb3b48fdffba2ed096097eb172497d # sha1 sum for "another"
   email: pielko@hell.ru
