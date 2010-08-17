@@ -1,0 +1,15 @@
+<!-- Warunek wyswietlenia w ogole formularza (jesli user jest juz zalogowany...)-->
+
+<%= form_tag do %>
+  <div class="field">
+    <%= label_tag :login %><br />
+    <%= text_field_tag :login %>
+  </div>
+  <div class="field">
+    <%= label_tag :pass %><br />
+    <%= password_field_tag :pass %>
+  </div>
+  <div class="field">
+    <%= submit_tag "Zaloguj" %>
+  </div>
+<% end %>
