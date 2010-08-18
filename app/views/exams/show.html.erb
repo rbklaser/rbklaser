@@ -1,29 +1,17 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Subject:</b>
-  <%= @exam.subject %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @exam.name %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @exam.date %>
-</p>
-<p>
-  <b>Źródła do nauki:</b>
-  <% @exam.resources.each do |resource| %>
-    <%= resource.name %>
-    <br />
-    Zawartość: <%= resource.content %>
-    <br />
-    Link: <%= link_to(resource.name, resource.url) %>
-<% end %>
-</p>
+<div id="exam">
+  <h1><%= @exam.name %></h1> 
+   <!-- Tu powinno byc desc, ale to kodowanie..-->
+  <p class="important">Data: <%= @exam.date %></p>
+  <p class="important">Pozostało: <%= distance_of_time_in_words(Time.now, @exam.date) %></p>
+  <div id="resources">
+    <% @exam.resources.each do |resource| %>
+      
+      
+      
+    <% end %>
+  </div>
+</div>
 
 
 <%= link_to 'Edit', edit_exam_path(@exam) %> |
