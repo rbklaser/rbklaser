@@ -1,0 +1,7 @@
+<h1>Profil</h1>
+<% unless session[:user_id] %>
+ <p>Nie jesteś zalogowany</p>
+ <%= link_to "Kliknij, aby się zalogować", :login %>
+<% else %>
+  <p><%= @current_user.name %></p>
+<% end %>

@@ -1,28 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>Imię:</b>
   <%= @user.name %>
 </p>
 
 <p>
-  <b>Sec name:</b>
+  <b>Nazwisko:</b>
   <%= @user.sec_name %>
 </p>
 
 <p>
-  <b>Nrdziennika:</b>
+  <b>Nr dziennika:</b>
   <%= @user.nrdziennika %>
 </p>
 
 <p>
-  <b>Nrtel:</b>
+  <b>Nr telefonu:</b>
   <%= @user.nrtel %>
 </p>
 
 <p>
-  <b>Avatar</b>
-  <%= image_tag @user.photo.url(:normal) %>
+  <b>Avatar:</b>
+  <% if @user.photo_file_name != nil %>
+    <%= image_tag @user.photo.url(:normal) %>
+  <% else %>
+    Brak
+  <% end %> 
 </p>
 
 

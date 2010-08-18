@@ -5,6 +5,7 @@ Rbklaser::Application.routes.draw do
   
   match 'login' => 'users#login'
   match 'logout' => 'users#logout'
+  match 'users/profile' => 'users#profile'
   match 'exams/search' => 'exams#search'
   
   resources :resources, :exam, :users

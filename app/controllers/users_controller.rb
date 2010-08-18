@@ -72,6 +72,8 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
+    # Do tych wszystkich metod co moga cos dodawac/zmieniac trzeba dodac ze musi byc user zalogowany i dodatkowo
+    # moze zmieniac tylko siebie (chyba ze jest adminem)
     @user = User.find(params[:id])
     @user.destroy
 
@@ -88,7 +90,7 @@ class UsersController < ApplicationController
     if params[:login] && params[:pass]
       u = User.auth(params[:login], params[:pass])
       if u.class == User
-        session[:user_id] = u.id  
+        session[:user_id] = u.id
         redirect_to :root
       end
       @login_errors = "Niepoprawne dane"
@@ -97,6 +99,14 @@ class UsersController < ApplicationController
   
   def logout
     session[:user_id] = nil
+    @user = nil
     redirect_to :root
+  end
+  
+  def profile
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      render :show
+    end
   end
 end
