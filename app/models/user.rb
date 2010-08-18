@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
       
       def self.auth(email_try, pass_try)
       	      pass_try = Digest::SHA1.hexdigest(pass_try)
-      	      u = User.where("email = ? AND pass = ?", email_try, pass_try)
+      	      u = User.where("email = ? AND pass = ?", email_try, pass_try).first
       	      return u unless u.blank?
       	      nil
       end

@@ -82,6 +82,21 @@ class UsersController < ApplicationController
   end
   
   def login
-    
+    if session[:user_id]
+      redirect_to :root, :notice => "Jestes juz zalogowany"
+    end
+    if params[:login] && params[:pass]
+      u = User.auth(params[:login], params[:pass])
+      if u.class == User
+        session[:user_id] = u.id  
+        redirect_to :root
+      end
+      @login_errors = "Niepoprawne dane"
+    end
+  end
+  
+  def logout
+    session[:user_id] = nil
+    redirect_to :root
   end
 end

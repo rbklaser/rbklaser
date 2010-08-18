@@ -4,6 +4,7 @@ Rbklaser::Application.routes.draw do
   #map.search 'exams/search', 'exams#search'
   
   match 'login' => 'users#login'
+  match 'logout' => 'users#logout'
   match 'exams/search' => 'exams#search'
   
   resources :resources, :exam, :users

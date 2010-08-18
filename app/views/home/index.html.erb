@@ -1,1 +1,6 @@
 <h1>Home#index</h1>
+<% if session[:user_id] %>
+  <%= link_to "Wyloguj się", :logout %>
+<% else %>
+  <%= link_to "Zaloguj", :login %>
+<% end %>

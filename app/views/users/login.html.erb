@@ -1,6 +1,9 @@
 <!-- Warunek wyswietlenia w ogole formularza (jesli user jest juz zalogowany...)-->
 
 <%= form_tag do %>
+  <% if @login_errors %>
+  <p><%= @login_errors %></p>
+  <% end %>
   <div class="field">
     <%= label_tag :login %><br />
     <%= text_field_tag :login %>
