@@ -1,9 +1,15 @@
 <h1>Home#index</h1>
-<h2>Najbliższe egzaminy</h2>
+<h2>Najbliższe egzaminy!</h2>
 <% if @exams %>
   <% @exams.each do |exam| %>
-    <p><%= exam.name %></p>
+    <div id="exam">
+      <span><%= link_to exam.name, exam %></span>
+      |
+      <span><%= exam.subject %></span>
+      |
+      <!-- Nie dziala wyswietlanie.. cos z kodowaniem bazy danych<span><%= exam.subject %></span>-->
+    </div>
   <% end %>
 <% else %>
-  Nie ma żadnych egzaminów
+  Nie ma żadnych egzaminów.
 <% end %>
