@@ -39,5 +39,6 @@ class UsersControllerTest < ActionController::TestCase
     #login :post => {:login => '', :pass => ''}
     get :login
     assert_response :succes
+    
   end
 end

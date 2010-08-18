@@ -7,8 +7,15 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+<div id="head">
+  <ul>
+    <% if session[:user_id] %>
+     <li></a><%= link_to "Wyloguj się", :logout %></li>
+    <% else %>
+      <li><%= link_to "Zaloguj", :login %></li>
+    <% end %>
+  </ul>
+</div>
 <%= yield %>
-
 </body>
 </html>

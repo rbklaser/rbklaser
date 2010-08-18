@@ -1,6 +1,9 @@
 <h1>Home#index</h1>
-<% if session[:user_id] %>
-  <%= link_to "Wyloguj się", :logout %>
+<h2>Najbliższe egzaminy</h2>
+<% if @exams %>
+  <% @exams.each do |exam| %>
+    <p><%= exam.name %></p>
+  <% end %>
 <% else %>
-  <%= link_to "Zaloguj", :login %>
+  Nie ma żadnych egzaminów
 <% end %>
