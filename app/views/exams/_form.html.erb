@@ -10,24 +10,25 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
-    <%= f.label :subject %><br />
-    <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :opis %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :Nazwa %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :date %><br />
+    <%= f.label :Przedmiot %><br />
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :Opis %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label "Data sprawdzianu" %><br />
     <%= f.date_select :date %>
   </div>
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Utwórz nowy sprawdzian" %>
   </div>
 <% end %>

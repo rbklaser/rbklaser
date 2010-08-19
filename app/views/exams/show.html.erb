@@ -1,18 +1,21 @@
 <p id="notice"><%= notice %></p>
 <div id="exam">
   <h1><%= @exam.name %></h1> 
-   <!-- Tu powinno byc desc, ale to kodowanie..-->
-  <p class="important">Data: <%= @exam.date %></p>
+  <p><%= @exam.description %></p>
+  <p class="important">Data: <%= l @exam.date %></p>
   <p class="important">Pozostało: <%= distance_of_time_in_words(Time.now, @exam.date) %></p>
   <div id="resources">
-    <% @exam.resources.each do |resource| %>
-      
-      
-      
+    <h3>Materiały do nauki:</h3>
+      <% @exam.resources.each do |resource| %>
+      <div id="resource">
+      <h4><%= resource.name %></h4>
+      <p><%= resource.content if resource.content%></p>
+      <p><%= link_to "Link do zewnętrznego źródła nauki", resource.url %></p>
+      </div>
     <% end %>
   </div>
 </div>
 
 
-<%= link_to 'Edit', edit_exam_path(@exam) %> |
-<%= link_to 'Back', exams_path %>
+<%= link_to 'Edytuj', edit_exam_path(@exam) %> |
+<%= link_to 'Strona główna', :root %>

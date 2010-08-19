@@ -26,7 +26,7 @@ class ExamsController < ApplicationController
   # GET /exams/new.xml
   def new
     @exam = Exam.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @exam }
