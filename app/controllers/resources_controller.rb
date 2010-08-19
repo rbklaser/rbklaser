@@ -49,16 +49,6 @@ class ResourcesController < ApplicationController
     else
       render :json => @resource.errors, :status => 406
     end
-    #respond_to do |format|
-    #  if @resource.save
-    #   flash[:notice] = "Dodano nowe zrodlo nauki"
-    #    format.html { redirect_to :back }
-    #  else
-    #    flash[:notice] = params.to_s + @resource.errors.to_s
-    #    format.html { redirect_to :back }
-    #    #format.html { render :action => "new" }
-    #  end
-    #end
   end
 
   # PUT /resources/1

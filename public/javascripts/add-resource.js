@@ -22,11 +22,12 @@ $(function(){
         f.bind("ajax:success", function(ev, data, status, xhr){ 
             notice.text(data).show(); 
             // Czyścimy pola tylko w przypadku sukcesu
+            // Clear these values when success only
             $("#resource_name").val("");
             $("#resource_content").val("");
             $("#resource_url").val("");
             // Trzeba będzie jeszcze skądś wydobyć z wszystkie źródła, a MOŻE nawet je stronicować i wyświetlić od nowa
-            
+            // need to reload all resources NOW
             
         })
         f.bind("ajax:failure", function(ev, xhr, status){
