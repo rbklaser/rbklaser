@@ -8,7 +8,11 @@ Rbklaser::Application.routes.draw do
   match 'users/profile' => 'users#profile'
   match 'exams/search' => 'exams#search'
   
-  resources :resources, :exams, :users
+  #resources :exams, :has_many => :resources
+  #resources :resources
+  resources :exams do
+    resources :resources
+  end
 
   resources :users
 

@@ -10,9 +10,32 @@
       <div id="resource">
       <h4><%= resource.name %></h4>
       <p><%= resource.content if resource.content%></p>
-      <p><%= link_to "Link do zewnętrznego źródła nauki", resource.url %></p>
+      <% unless resource.url.blank?  %>
+       <%= link_to "Link do zewnętrznego źródła nauki", resource.url %>
+      <% end %>
       </div>
     <% end %>
+    <h4>Dodaj nowe źródło nauki</h4>
+      <div>
+        <% form_for [@exam, @exam.resources.new ]  do |r| %>
+        
+        <div class="field">
+          <%= r.label :name, "Nazwa" %><br />
+          <%= r.text_field :name %>
+        </div>
+        <div class="field">
+          <%= r.label :url,  "Adres strony z dodatkowymi materiałami" %><br/>
+          <%= r.url_field :url %>
+        </div>
+        <div class="field">
+          <%= r.label :content, "Materiał pomocniczy" %><br />
+          <%= r.text_area :content %>
+        </div>
+        <div class="field">
+          <%= r.submit :Dodaj %>
+         </div>
+        <% end %>
+      </div>
   </div>
 </div>
 

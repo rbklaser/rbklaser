@@ -1,4 +1,7 @@
 class ResourcesController < ApplicationController
+  before_filter do
+    @exam = Exam.find(params[:exam_id])
+  end
   # GET /resources
   # GET /resources.xml
   def index
@@ -24,7 +27,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   # GET /resources/new.xml
   def new
-    @resource = Resource.new
+    @resource = @exam.resources.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,15 +43,14 @@ class ResourcesController < ApplicationController
   # POST /resources
   # POST /resources.xml
   def create
-    @resource = Resource.new(params[:resource])
+    @resource = @exam.resources.new(params[:resource])
 
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to(@resource, :notice => 'Resource was successfully created.') }
-        format.xml  { render :xml => @resource, :status => :created, :location => @resource }
+        format.html { redirect_to :back }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @resource.errors, :status => :unprocessable_entity }
+        format.html {render :text => params.to_s + @resource.errors.to_s }
+        #format.html { render :action => "new" }
       end
     end
   end
