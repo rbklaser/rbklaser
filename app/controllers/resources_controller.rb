@@ -47,7 +47,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if @resource.save
-        flash[:notice] = "Dodano nowe źródło nauki"
+        flash[:notice] = "Dodano nowe zrodlo nauki"
         format.html { redirect_to :back }
       else
         flash[:notice] = params.to_s + @resource.errors.to_s
