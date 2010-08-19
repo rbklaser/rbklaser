@@ -1,9 +1,12 @@
+<div id="flash_notice"></div>
 <p id="notice"><%= notice %></p>
 <div id="exam">
   <h1><%= @exam.name %></h1> 
   <p><%= @exam.description %></p>
   <p class="important">Data: <%= l @exam.date %></p>
   <p class="important">Pozostało: <%= distance_of_time_in_words(Time.now, @exam.date) %></p>
+ 
+    <!-- To całe przenieść jako partial, żeby można było Ajaxem wczytać -->  
   <div id="resources">
     <h3>Materiały do nauki:</h3>
       <% @exam.resources.each do |resource| %>
@@ -14,17 +17,17 @@
        <%= link_to "Link do zewnętrznego źródła nauki", resource.url %>
       <% end %>
       </div>
+      <!-- -->
     <% end %>
     <h4>Dodaj nowe źródło nauki</h4>
       <div>
-        <% form_for [@exam, @exam.resources.new ]  do |r| %>
-        
+        <% form_for [@exam, @exam.resources.new ], :remote => true  do |r| %>     
         <div class="field">
           <%= r.label :name, "Nazwa" %><br />
           <%= r.text_field :name %>
         </div>
         <div class="field">
-          <%= r.label :url,  "Adres strony z dodatkowymi materiałami" %><br/>
+          <%= r.label :url,  "Adres strony z dodatkowymi iałami" %><br/>
           <%= r.url_field :url %>
         </div>
         <div class="field">
