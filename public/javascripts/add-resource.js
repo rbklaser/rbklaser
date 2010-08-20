@@ -20,7 +20,9 @@ $(function(){
             loading.hide();
         })
         f.bind("ajax:success", function(ev, data, status, xhr){ 
-            notice.text(data).show(); 
+            //Ten kawałek powinno się brać z odpowiedzi
+        	// TODO!
+        	notice.text("Dodano źródło nauki!").show(); 
             // Czyścimy pola tylko w przypadku sukcesu
             // Clear these values when success only
             $("#resource_name").val("");
@@ -31,6 +33,7 @@ $(function(){
             $("#resources").append($('<div class="resource"><h4>'+
             		data  + '</h4></div>'
             ));
+            // Ok bedzie dzialac, tu tylko sparsowac data
             
         })
         f.bind("ajax:failure", function(ev, xhr, status){
