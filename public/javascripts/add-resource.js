@@ -21,24 +21,26 @@ $(function(){
         })
         f.bind("ajax:success", function(ev, data, status, xhr){ 
         	notice.text("Dodano źródło nauki!").show(); 
-        	
-            // Czyścimy pola tylko w przypadku sukcesu
-            // Clear these values when success only
+
             $("#resource_name").val("");
             $("#resource_content").val("");
             $("#resource_url").val("");
-            // Trzeba będzie jeszcze skądś wydobyć z wszystkie źródła, a MOŻE nawet je stronicować i wyświetlić od nowa
-            // need to reload all resources NOW
+
             var response = $.parseJSON(data);
-            
+            console.log(response);
             if (response.resource.url != ''){
-            	var link = '<a href="'
-            		//DOKONCZ TODO
+            	var link = '<a href="'+response.resource.url+'">Link do zewnetrznego zrodla nauki</a>';
             }
-            $("#resources").append($('<div class="resource"><h4>'+ response.resource.name +'</h4></div>'
-            		+ 
-            ));
-            // Ok bedzie dzialac, tu tylko sparsowac data
+            else {
+            	var link = '';
+            }
+            
+            if (response.resource.content !=''){
+            	var content = '<p>'+response.resource.content+'</p>';
+            }
+            $("#resources").append('<div class="resource"><h4>'+ response.resource.name +'</h4>'+
+            		link+content + '</div>');
+            
             
         })
         f.bind("ajax:failure", function(ev, xhr, status){

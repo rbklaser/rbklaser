@@ -45,8 +45,6 @@ class ResourcesController < ApplicationController
   def create
     @resource = @exam.resources.new(params[:resource])
     if @resource.save
-      # Potrzebne do wczytania resourceów
-      # ale..przecież wystarczy dodać ten dodawany gdy ajax sie powiedzie :)
       render :json => @resource
     else
       render :json => @resource.errors, :status => 406
