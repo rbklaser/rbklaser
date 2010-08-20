@@ -28,6 +28,9 @@ $(function(){
             $("#resource_url").val("");
             // Trzeba będzie jeszcze skądś wydobyć z wszystkie źródła, a MOŻE nawet je stronicować i wyświetlić od nowa
             // need to reload all resources NOW
+            $("#resources").append($('<div class="resource"><h4>'+
+            		data  + '</h4></div>'
+            ));
             
         })
         f.bind("ajax:failure", function(ev, xhr, status){

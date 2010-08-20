@@ -10,7 +10,7 @@
   <div id="resources">
     <h3>Materiały do nauki:</h3>
       <% @exam.resources.each do |resource| %>
-      <div id="resource">
+      <div class="resource">
       <h4><%= resource.name %></h4>
       <p><%= resource.content if resource.content%></p>
       <% unless resource.url.blank?  %>
@@ -19,6 +19,7 @@
       </div>
       <!-- -->
     <% end %>
+  </div>
     <h4>Dodaj nowe źródło nauki</h4>
       <div>
         <% form_for [@exam, @exam.resources.new ], :remote => true  do |r| %>     

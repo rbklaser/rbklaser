@@ -28,7 +28,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new.xml
   def new
     @resource = @exam.resources.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @resource }
@@ -45,7 +45,9 @@ class ResourcesController < ApplicationController
   def create
     @resource = @exam.resources.new(params[:resource])
     if @resource.save
-      render :json => "Dodano nowe zrodlo nauki"
+      # Potrzebne do wczytania resourceów
+      # ale..przecież wystarczy dodać ten dodawany gdy ajax sie powiedzie (:
+      render :json => @resource
     else
       render :json => @resource.errors, :status => 406
     end
