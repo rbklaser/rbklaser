@@ -27,7 +27,6 @@ $(function(){
             $("#resource_url").val("");
 
             var response = $.parseJSON(data);
-            console.log(response);
             if (response.resource.url != ''){
             	var link = '<a href="'+response.resource.url+'">Link do zewnetrznego zrodla nauki</a>';
             }
