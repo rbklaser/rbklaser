@@ -20,9 +20,8 @@ $(function(){
             loading.hide();
         })
         f.bind("ajax:success", function(ev, data, status, xhr){ 
-            //Ten kawałek powinno się brać z odpowiedzi
-        	// TODO!
         	notice.text("Dodano źródło nauki!").show(); 
+        	
             // Czyścimy pola tylko w przypadku sukcesu
             // Clear these values when success only
             $("#resource_name").val("");
@@ -30,8 +29,14 @@ $(function(){
             $("#resource_url").val("");
             // Trzeba będzie jeszcze skądś wydobyć z wszystkie źródła, a MOŻE nawet je stronicować i wyświetlić od nowa
             // need to reload all resources NOW
-            $("#resources").append($('<div class="resource"><h4>'+
-            		data  + '</h4></div>'
+            var response = $.parseJSON(data);
+            
+            if (response.resource.url != ''){
+            	var link = '<a href="'
+            		//DOKONCZ TODO
+            }
+            $("#resources").append($('<div class="resource"><h4>'+ response.resource.name +'</h4></div>'
+            		+ 
             ));
             // Ok bedzie dzialac, tu tylko sparsowac data
             
