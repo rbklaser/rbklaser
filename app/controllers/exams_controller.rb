@@ -73,13 +73,14 @@ class ExamsController < ApplicationController
   # DELETE /exams/1
   # DELETE /exams/1.xml
   def destroy
-    @exam = Exam.find(params[:id])
-    @exam.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(exams_url) }
-      format.xml  { head :ok }
+    if session[:user_id] && User.find(session[:user_id]).is_admin
+          @exam = Exam.find(params[:id])
+          @exam.destroy
+    else
+          redirect_to :back, :notice => "Nie masz praw"
+          return
     end
+      redirect_to :root
   end
   
   def search
