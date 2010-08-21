@@ -27,14 +27,14 @@ $(function(){
             $("#resource_url").val("");
 
             var response = $.parseJSON(data);
-            if (response.resource.url != ''){
+            if (response.resource.url != undefined){
             	var link = '<a href="'+response.resource.url+'">Link do zewnetrznego zrodla nauki</a>';
             }
             else {
             	var link = '';
             }
             
-            if (response.resource.content !=''){
+            if (response.resource.content !=undefined){
             	var content = '<p>'+response.resource.content+'</p>';
             }
             $("#resources").append('<div class="resource"><h4>'+ response.resource.name +'</h4>'+
