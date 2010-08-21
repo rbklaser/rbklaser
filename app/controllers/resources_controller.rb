@@ -54,28 +54,40 @@ class ResourcesController < ApplicationController
   # PUT /resources/1
   # PUT /resources/1.xml
   def update
-    @resource = Resource.find(params[:id])
-
-    respond_to do |format|
-      if @resource.update_attributes(params[:resource])
-        format.html { redirect_to(@resource, :notice => 'Resource was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @resource.errors, :status => :unprocessable_entity }
+    if @is_admin
+      @resource = Resource.find(params[:id])
+  
+      respond_to do |format|
+        if @resource.update_attributes(params[:resource]) 
+          format.html { redirect_to(@resource, :notice => 'Resource was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @resource.errors, :status => :unprocessable_entity }
+        end
       end
-    end
+    else
+      format.html { render :action => "edit" }
+      format.xml  { render :xml => @resource.errors, :status => :unprocessable_entity }
   end
 
   # DELETE /resources/1
   # DELETE /resources/1.xml
   def destroy
-    @resource = Resource.find(params[:id])
-    @resource.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(resources_url) }
-      format.xml  { head :ok }
+    if @is_admin
+      @resource = Resource.find(params[:id])
+      @resource.destroy 
+      respond_to do |format|
+        format.html { redirect_to(resources_url) }
+        format.xml  { head :ok }
+      end
+    else 
+      respond_to do |format|
+        format.html { redirect_to(resources_url), :notice => "brak uprawnien"  }
+        format.xml  { head :no_acces }
     end
+  end
+    
+
   end
 end

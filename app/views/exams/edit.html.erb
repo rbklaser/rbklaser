@@ -1,6 +1,11 @@
-<h1>Editing exam</h1>
+<h1>Edycja Egzaminu</h1>
 
-<%= render 'form' %>
+<%- if @is_admin %>
+<%=render 'form'%>
 
 <%= link_to 'Show', @exam %> |
-<%= link_to 'Back', exams_path %>
+<% else %>
+Niestety nie posiadasz praw
+<%- end %>
+<br />
+<%= link_to 'Powrót', exams_path %>

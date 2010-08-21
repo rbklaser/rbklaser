@@ -42,8 +42,18 @@
   </div>
 </div>
 
-<!-- Jesli user jest adminem to pozwala usunac i edytowac dany Egzamin i resource-->
-<%- if session[:user_id ]%>
+@is_admin.class<%= @is_admin.class %>
+<br />
+@user_id.class: <%= @user_id.class %>
+<br />
+@is_admin: <%= @is_admin %>
+<br />
+@user_id: <%= @user_id %>
+<br />
+session[:user_id]: <%= session[:user_id] %>
+<br />
+
+<%- if @is_admin %>
 <%= link_to 'Edytuj', edit_exam_path(@exam) %> 
 <%= link_to 'Usuń', @exam, :confirm => 'Jesteś pewien?', :method => :delete %>
 <%- end %>
