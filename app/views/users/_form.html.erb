@@ -12,48 +12,43 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Imię" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :sec_name %><br />
+    <%= f.label :sec_name, "Nazwisko" %><br />
     <%= f.text_field :sec_name %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "Email" %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :email_confirmation %><br />
+    <%= f.label :email_confirmation, "Powtórz email" %><br />
     <%= f.text_field :email_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :pass %><br />
+    <%= f.label :pass, "Hasło" %><br />
     <%= f.password_field :pass %>
   </div>
   <div class="field">
-    <%= f.label :pass_confirmation %><br />
+    <%= f.label :pass_confirmation, "Powtórz hasło" %><br />
     <%= f.password_field :pass_confirmation %>
-  </div>
+  </div>  
   <div class="field">
-    <%= f.label :is_admin %><br />
-    <%= f.text_field :is_admin %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :nrdziennika %><br />
+    <%= f.label :nrdziennika, "Nr w dzienniku" %><br />
     <%= f.text_field :nrdziennika %>
   </div>
   <div class="field">
-    <%= f.label :nrtel %><br />
+    <%= f.label :nrtel, "Nr telefonu" %><br />
     <%= f.text_field :nrtel %>
   </div>
   
   <div class="field">
-    <%= f.label 'Avatar' %>
+    <%= f.label :photo, "Avatar" %>
     <%= f.file_field :photo %>
    </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Wyślij' %>
   </div>
 <% end %>

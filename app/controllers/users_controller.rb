@@ -40,15 +40,14 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
+    params[:user][:is_admin] = 0 if params[:user]
     @user = User.new(params[:user])
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :cation => @user }
+        format.html { redirect_to(:root, :notice => 'Zarejestrowales sie.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -56,17 +55,21 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
-    end
+    if !@is_admin
+      redirect_to :root, :notice 'Musisz byc rootem'
+      return
+    else
+        @user = User.find(params[:id])
+    
+        respond_to do |format|
+          if @user.update_attributes(params[:user])
+            format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+            format.xml  { head :ok }
+          else
+            format.html { render :action => "edit" }
+            format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+          end
+        end
   end
 
   # DELETE /users/1
