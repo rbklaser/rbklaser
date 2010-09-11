@@ -11,7 +11,7 @@
       <% @exam.resources.each do |resource| %>
       <div class="resource">
       <h4><%= resource.name %></h4>
-      <p><%= resource.content if resource.content%></p>
+      <p><%= RDiscount.new(resource.content, :smart, :filter_html).to_html %></p>
       <% unless resource.url.blank?  %>
        <%= link_to "Link do zewnętrznego źródła nauki", resource.url %>
       <% end %>

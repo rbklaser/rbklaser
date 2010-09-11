@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     if !@is_admin
-      redirect_to :root, :notice 'Musisz byc rootem'
+      redirect_to :root, :notice => 'Musisz byc rootem'
       return
     else
         @user = User.find(params[:id])
@@ -87,16 +87,17 @@ class UsersController < ApplicationController
   end
   
   def login
-    if session[:user_id]
+    if @user_id
       redirect_to :root, :notice => "Jestes juz zalogowany"
     end
     if params[:login] && params[:pass]
       u = User.auth(params[:login], params[:pass])
       if u.class == User
         session[:user_id] = u.id
-        redirect_to :root
+        redirect_to :root, :notice => "Zostales zalogowany"
+      else
+        @login_errors = "Niepoprawne dane"
       end
-      @login_errors = "Niepoprawne dane"
     end
   end
   
@@ -112,4 +113,5 @@ class UsersController < ApplicationController
       render :show
     end
   end
+end
 end
