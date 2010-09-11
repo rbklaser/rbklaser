@@ -71,7 +71,7 @@ class UsersController < ApplicationController
           end
         end
   end
-
+  end
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
@@ -85,8 +85,8 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
   def login
+    print "Test"
     if @user_id
       redirect_to :root, :notice => "Jestes juz zalogowany"
     end
@@ -100,7 +100,6 @@ class UsersController < ApplicationController
       end
     end
   end
-  
   def logout
     session[:user_id] = nil
     @user = nil
@@ -113,5 +112,4 @@ class UsersController < ApplicationController
       render :show
     end
   end
-end
 end
